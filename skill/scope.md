@@ -14,7 +14,7 @@ Two parts. Staff wrote the first; you write the second.
 
 Only issues in the course's Path Review repository are candidates:
 
-- Repo: `<ORG>/<PATH-REVIEW-REPO>` <!-- paste your section's repo from the Unit 1 Check-In page -->
+- Repo: `codepath/pathreview-ai301-fa26-howard`
 
 Do not search, fetch, or grade issues from any other repository, however
 promising. The wider GitHub comes later in the course; for now the field
@@ -30,10 +30,4 @@ else in the rubric applies as written.
 
 ## Your fit profile
 
-<!-- YOU write this part: a few sentences about you. What languages and
-tools you have actually used, what you want to get better at, anything
-you want to avoid. The skill uses this only to RANK the issues your
-rubric accepts, never to change a verdict: fit cannot rescue an issue
-your rubric rejects, and cannot sink one it accepts. -->
-
-(Write a few sentences here.)
+I am using this course's Python-based PathReview repo to build confidence in tracing test failures and making focused bug fixes. I want more practice working from a clear reproduction to a small, testable change. I prefer tasks with concise reproduction steps, a narrow code path, and little product ambiguity.
