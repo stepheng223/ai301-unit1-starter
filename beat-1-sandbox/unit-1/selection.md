@@ -3,17 +3,40 @@
 ## Chosen issue
 
 - Issue: https://github.com/codepath/pathreview-ai301-fa26-howard/issues/64
-- Title: Relevance scorer "partial overlap" test fixture actually has full query overlap
 - Verdict from the skill: accept
-- Why it fits: one bounded change (correct the fixture in `test_query_with_partial_overlap`, and drop the strict `xfail` marker with it), a two-line reproduction (`pytest tests/unit/test_relevance_scorer.py -q`), no product ambiguity, and a collaborator-filed issue in an active repo. That matches my fit profile: trace a failing test to a small, testable fix.
+- Why it fits: this is a focused test-fixture correction with an exact failing test command and a clear expected result. It matches my interest in Python, reading tests, and making small, verifiable changes. The live run also accepted issue #62, but ranked #64 higher for my fit profile. It rejected #61 because an open PR already addresses it.
 
-## Selection rationale
+## Run history
 
-- **How hard will claiming be?** Hard to get exclusive ownership, and that is expected. Two classmates (djenkins05, Pamzlerinz) already commented on 2026-10-06 and both posted reproductions. Path Review's house rule says shared claims do not block an issue and credit attaches to the PR, so I will claim anyway. I will comment first with my plan, then open a small PR quickly, because the PR is what counts.
-- **What did I weigh beyond the verdict?** The skill's accept only says the issue passes the five required checks. I also weighed my fit profile: a narrow code path, concise reproduction steps and little ambiguity. I also checked the one catch the reproductions turned up: the test is now `xfail(strict=True)`, so fixing only the fixture would turn into an unexpected-pass failure unless the marker comes off too. That is still one small change.
-- **What could go wrong?** Competing PRs on the same one-line fix. Open PRs 73-79 are all other issues, so none is on #64 yet.
+1. **October 1 — initial full run.** I ran the full 20-issue harness with the original rubric and saved its transcript. It agreed on 18/20, met the category floor, and passed the bar. It rejected issue-19 (gold: accept) on newcomer-sized scope and accepted issue-20 (gold: reject). This showed that my scope language was too strict about a bug report listing possible causes, and not explicit enough about an unresolved product-defining requirement.
+2. **October 3 — targeted re-check.** I clarified that the scope check should judge the shared outcome rather than optional implementation suggestions, and that a feature request fails when a product-defining input is explicitly TBD. I ran `--only issue-19,issue-20`; both then matched their gold labels.
+3. **October 3 — revised full run.** The full run agreed on 19/20. It now matched issue-19 and issue-20, but accepted issue-15 (gold: reject). The issue had been open for years and had two closed, unmerged linked PR attempts; I had not made that evidence a clear pass/fail rule.
+4. **October 3 — targeted re-check and final full run.** I added a specific scope threshold for issues open at least two years with at least two closed, unmerged linked PR attempts, unless a maintainer later confirms the scope is settled and invites a fresh attempt. `--only issue-15` matched gold. I then ran the complete harness again with `--save-run` to create the submitted `eval-run.txt`. The final result was **20/20**, with a match in every category. No partial run was used as the submitted transcript.
+
+5. **October 9 — independent final verification.** I ran the full 20-issue Sonnet harness against `tools/issue-select/rubric.md` and `tools/issue-select/SKILL.md`. It again agreed on **20/20** and met every category floor. The harness-generated transcript is the current `eval-run.txt`; its fingerprints match the submitted files.
+
+## Issue analysis
+
+I am analyzing **issue-15** (`zulip/zulip#19589`), a scored issue from the final run.
+
+- **My rubric's verdict:** reject
+- **Gold verdict:** reject
+- **Why:** the requested change is described as separating the command and message fields in an outgoing webhook, but the snapshot also shows the issue had been open since 2021 and had two closed, unmerged linked PRs. The earlier rubric did not clearly treat repeated failed attempts as a scope warning, so the first revised full run accepted it based on the issue's concise description. I added an explicit threshold for long-open issues with repeated closed, unmerged attempts; the final rubric then rejected it for newcomer-sized scope. This is evidence about the history of the task, not simply its “good first issue” label.
+
+## Check rationale
+
+The current “Newcomer-sized scope” check in the uploaded rubric says:
+
+> Pass if the primary requested outcome is one bounded change with an identifiable result. Judge the shared problem being fixed, not the number of possible causes or optional implementation suggestions; a single concrete bug can pass even when the issue lists alternative causes or approaches. Fail for a tracking/umbrella issue, a pure usage question, work whose design is still actively unsettled, an issue that makes a maintainer-confirmed broad/core-internals change the task, or a product decision with no stated requirements. A feature request also fails when a product-defining input needed to implement it (such as the asset or identity to add) is explicitly TBD. Also fail if an issue has been open for at least 2 years and has at least 2 closed, unmerged linked PR attempts, unless a maintainer later confirms the scope is settled and invites a fresh attempt. Do not fail only because a report is brief, lacks reproduction steps, or lacks a detailed checklist.
+
+This check addresses the three scope disagreements I saw: issue-19's possible causes do not change its single reported freeze, issue-20's logo asset is explicitly TBD, and issue-15's repeated closed attempts indicate that its short issue description understates the difficulty.
+
+## Trade-offs
+
+The scope check deliberately balances clear outcomes against evidence of hidden difficulty. The two-year/two-PR threshold is concrete and caught issue-15, but it could reject an issue whose old attempts were unrelated or whose scope was later clarified; the maintainer-confirmation exception helps avoid that. The rubric also remains conservative about an explicitly unresolved product choice such as issue-20's unspecified logo asset. The final 20/20 is a strong result on these snapshots, not a guarantee that every live issue is equally straightforward.
 
 ## Verdict output
+
 
 Issue: https://github.com/codepath/pathreview-ai301-fa26-howard/issues/64
 
@@ -33,34 +56,3 @@ Live-mode run of `issue-select` (2026-10-08, evidence from the GitHub API). Scop
 }
 ```
 
-## Run history
-
-My rubric was first evaluated with the full harness command:
-
-```bash
-python3 /Users/stephen/ai301-unit1-starter/eval/run_eval.py --rubric /Users/stephen/.claude/skills/issue-select/rubric.md --save-run eval-run.txt
-```
-
-That full run produced the transcript saved in `eval-run.txt`. The result was 18/20 scored items in agreement, which is exactly at the course bar, with the main disagreements coming from issue-19 and issue-20. I used that output to check which checks were too strict or too permissive, then kept the rubric focused on the four core families the course emphasizes: maintainer health, repo liveness, newcomer-sized scope, and no active claimant, while also keeping the policy check explicit.
-
-## Issue analysis
-
-I used issue-15 (source: zulip/zulip#19589) as the scored item to walk through, because it is the one that drove the rubric's long-open/closed-PR clause. Gold label: reject. My rubric: reject — agreement, but only after the clause was added.
-
-- Gold verdict: reject
-- Rubric verdict: reject
-- Reasoning: the issue was opened 2021-08-18 and was still open as of the 2026-08-05 capture date, almost five years later. It has two linked PRs, zulip/zulip#20840 and zulip/zulip#23123, both closed without merging. The comment thread shows a long string of contributors claiming the issue via `@zulipbot claim` and then getting auto-unassigned after 14 days of inactivity, going back to 2021. That history is what the "open ≥2 years and ≥2 closed, unmerged linked PRs" clause in the Newcomer-sized scope check is built to catch: a task that reads as a bounded bug but has quietly defeated several attempts already, which makes it a bad bet for a first contribution even though nothing in the issue text itself looks broad.
-
-## Check rationale
-
-The rubric wording that mattered most was the "Newcomer-sized scope" check, quoted verbatim from `skill/rubric.md`:
-
-> "Pass if the primary requested outcome is one bounded change with an identifiable result. Judge the shared problem being fixed, not the number of possible causes or optional implementation suggestions; a single concrete bug can pass even when the issue lists alternative causes or approaches. Fail for a tracking/umbrella issue, a pure usage question, work whose design is still actively unsettled, an issue that makes a maintainer-confirmed broad/core-internals change the task, or a product decision with no stated requirements. A feature request also fails when a product-defining input needed to implement it (such as the asset or identity to add) is explicitly TBD. Also fail if an issue has been open for at least 2 years and has at least 2 closed, unmerged linked PR attempts, unless a maintainer later confirms the scope is settled and invites a fresh attempt. Do not fail only because a report is brief, lacks reproduction steps, or lacks a detailed checklist."
-
-The last added clause (the 2-year/2-closed-PR fail condition) is what turned issue-15 into a correct reject: without it, the check only looks at the issue text, which describes one bounded formatting change and would otherwise pass. Adding the history check let the rubric reject issues that look small on paper but have already consumed multiple contributors' attempts.
-
-## Trade-offs
-
-The 2-year/2-closed-PR clause can misfire on an issue whose old PRs failed for reasons that have nothing to do with the current scope — for example, a PR that was closed because it targeted an abandoned branch, or because the maintainer's requirements changed after the PR was filed, not because the work itself was too hard or ill-defined. In that case the rubric would reject a task that is still genuinely newcomer-sized, purely because of unrelated history.
-
-The accepted miss case is exactly that kind of issue: the rubric trades a few good bounded issues with messy, unrelated PR history for consistently avoiding issues like #19589, where repeat failed attempts are a real signal that something about the task is harder than it looks. The chosen issue, #64, has no PR history at all (no linked PRs, no stale attempts), so the clause does not touch it, and it fits the rubric's other four checks cleanly.

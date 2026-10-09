@@ -1,31 +1,31 @@
-# eval run written by run_eval.py at 2026-10-01T22:59:51Z
+# eval run written by run_eval.py at 2026-10-09T23:36:05Z
 # model: sonnet (pinned)
-# graded: /Users/stephen/.claude/skills/issue-select
+# graded: tools/issue-select
 # packages: 20 scored
-#   rubric.md  sha256:cff5d24082be5481
+#   rubric.md  sha256:6a2c5662394ab700
 #   SKILL.md  sha256:bbb295bf984701fd
 #
 grading 20 bundle(s) with rubric.md, model sonnet, 5 worker(s)...
-  issue-04: accept
   issue-01: accept
   issue-05: reject
-  issue-03: reject
   issue-02: reject
+  issue-03: reject
+  issue-04: accept
   issue-06: accept
-  issue-08: reject
   issue-07: reject
+  issue-08: reject
   issue-09: accept
-  issue-11: accept
   issue-10: reject
+  issue-11: accept
   issue-13: reject
   issue-12: reject
   issue-14: accept
-  issue-17: reject
   issue-16: accept
   issue-18: reject
   issue-15: reject
-  issue-19: reject
-  issue-20: accept
+  issue-17: reject
+  issue-19: accept
+  issue-20: reject
 
 item      gold    verdict  agree  note
 issue-01  accept  accept   yes    
@@ -46,8 +46,8 @@ issue-15  reject  reject   yes
 issue-16  accept  accept   yes    
 issue-17  reject  reject   yes    
 issue-18  reject  reject   yes    
-issue-19  accept  reject   NO     failed: Newcomer-sized scope
-issue-20  reject  accept   NO     graded accept
+issue-19  accept  accept   yes    
+issue-20  reject  reject   yes    
 
-categories: claimed 4/4  clear-accept 7/8  dead-repo 3/3  policy 1/1  scope 3/4
-agreement: 18/20 scored items  (bar: 18/20: PASS)
+categories: claimed 4/4  clear-accept 8/8  dead-repo 3/3  policy 1/1  scope 4/4
+agreement: 20/20 scored items  (bar: 18/20: PASS)
