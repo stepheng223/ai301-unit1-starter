@@ -6,6 +6,14 @@
 - Verdict from the skill: accept
 - Why it fits: this is a focused test-fixture correction with an exact failing test command and a clear expected result. It matches my interest in Python, reading tests, and making small, verifiable changes. The live run also accepted issue #62, but ranked #64 higher for my fit profile. It rejected #61 because an open PR already addresses it.
 
+## Selection rationale
+
+**Why this issue fits me.** Issue #64 fits my goal of practicing Python test debugging: it identifies `test_query_with_partial_overlap`, gives a focused pytest reproduction, and asks for a fixture correction plus removal of the strict xfail marker. That gives me a concrete result to verify and a narrow starting point for reading the code.
+
+**Anticipated claiming difficulty.** The October 8 live run found no assignee or open PR addressing #64, but did find classmates' claim comments. Under the Path Review house rule those comments do not block my contribution. I therefore expect claiming to be straightforward, while recognizing that classmates may independently work on the same fix. This assessment describes that run's evidence, not a guarantee about later availability.
+
+**How I weighed the choice beyond the verdict.** Acceptance establishes eligibility; I chose #64 over the also-accepted #62 because its explicit reproduction and fixture-focused change fit my preference for a small, testable Python fix. I weighed that learning opportunity against its limited breadth: it offers less practice with larger implementation or design changes. Issue #61 was rejected because an open PR already addressed it, so it was not part of the fit comparison.
+
 ## Run history
 
 1. **October 1 — initial full run.** I ran the full 20-issue harness with the original rubric and saved its transcript. It agreed on 18/20, met the category floor, and passed the bar. It rejected issue-19 (gold: accept) on newcomer-sized scope and accepted issue-20 (gold: reject). This showed that my scope language was too strict about a bug report listing possible causes, and not explicit enough about an unresolved product-defining requirement.
